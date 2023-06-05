@@ -1,11 +1,11 @@
 import { randomUUID } from "node:crypto";
 
 export class Instructor {
-  uuid: string;
+  id: string;
   name: string;
 
-  constructor(name: string, uuid?: string) {
-    this.uuid = uuid ?? randomUUID();
+  constructor(name: string, id?: string) {
+    this.id = id ?? randomUUID();
     this.name = name;
   }
 }

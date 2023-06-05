@@ -1,14 +1,23 @@
 import { Answer } from "../entities/answer";
+import { AnswersRepository } from "../repositories/answers-repository";
 
 interface AnswerQuestionDTO {
   content: string;
-  instructorUuid: string;
-  questionUuid: string;
+  instructorId: string;
+  questionId: string;
 }
 
 export class AnswerQuestionUseCase {
-  execute({ content, instructorUuid, questionUuid }: AnswerQuestionDTO): Answer {
-    const answer = new Answer(content);
+  constructor(
+    private answersRepository: AnswersRepository
+  ) { }
+
+  async execute({ content, instructorId, questionId }: AnswerQuestionDTO) {
+    const answer = new Answer({
+      content, authorId: instructorId, questionId
+    });
+
+    await this.answersRepository.create(answer);
 
     return answer;
   }
