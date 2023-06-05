@@ -1,0 +1,1 @@
+Value Object => Quando uma propriedade pode ser transformada numa classe quando ela envolve muitas regras
