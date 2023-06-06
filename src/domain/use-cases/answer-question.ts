@@ -2,10 +2,10 @@ import { UniqueEntityID } from "../../core/entities/unique-entity-id";
 import { Answer } from "../entities/answer";
 import { AnswersRepository } from "../repositories/answers-repository";
 
-interface AnswerQuestionDTO {
+interface AnswerQuestionUseCaseRequest {
   content: string;
-  instructorId: UniqueEntityID;
-  questionId: UniqueEntityID;
+  instructorId: string;
+  questionId: string;
 }
 
 export class AnswerQuestionUseCase {
@@ -13,9 +13,9 @@ export class AnswerQuestionUseCase {
     private answersRepository: AnswersRepository
   ) { }
 
-  async execute({ content, instructorId, questionId }: AnswerQuestionDTO) {
-    const answer = new Answer({
-      content, authorId: instructorId, questionId, createdAt: new Date()
+  async execute({ content, instructorId, questionId }: AnswerQuestionUseCaseRequest) {
+    const answer = Answer.create({
+      content, authorId: new UniqueEntityID(instructorId), questionId: new UniqueEntityID(questionId)
     });
 
     await this.answersRepository.create(answer);
