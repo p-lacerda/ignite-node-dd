@@ -33,4 +33,10 @@ export class InMemoryQuestionsRepository implements QuestionsRepository {
 
     this.items.splice(index, 1)
   }
+
+  async save(question: Question) {
+    const index = this.items.findIndex((item) => item.id === question.id)
+
+    this.items[index] = question
+  }
 }
