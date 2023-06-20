@@ -2,7 +2,7 @@ import { UniqueEntityID } from '../../src/core/entities/unique-entity-id'
 import {
   Question,
   QuestionProps,
-} from '../../src/domain/forum/application/entities/question'
+} from '../../src/domain/forum/enterprise/entities/question'
 import { faker } from '@faker-js/faker'
 
 export function makeQuestion(

@@ -1,4 +1,4 @@
-import { Answer } from '../../src/domain/forum/application/entities/answer'
+import { Answer } from '../../src/domain/forum/enterprise/entities/answer'
 import { AnswersRepository } from '../../src/domain/forum/application/repositories/answers-repository'
 
 export class InMemoryAnswersRepository implements AnswersRepository {
